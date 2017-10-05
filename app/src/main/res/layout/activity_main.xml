@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="suthasidev.cleanfoodproject.MainActivity">
 
     <!--Content-->
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--ToolBar-->
+        <android.support.v7.widget.Toolbar
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:id="@+id/toolbarMain"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            />
 
         <GridView
             android:layout_width="wrap_content"
@@ -22,33 +33,9 @@
             android:layout_above="@+id/linBotton"
             android:layout_gravity="center" />
 
-        <!--FoodBar-->
-        <!--<LinearLayout-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:id="@+id/linBotton">-->
 
-            <!--<Button-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Sign Up"-->
-                <!--android:id="@+id/button2"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:onClick="clickSignUpMain"-->
-                <!--android:layout_weight="1" />-->
 
-            <!--<Button-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/signin"-->
-                <!--android:id="@+id/button3"-->
-                <!--android:layout_weight="1"-->
-                <!--android:onClick="clickSignIn" />-->
-        <!--</LinearLayout>-->
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <!--Drawer Menu-->
     <LinearLayout

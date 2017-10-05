@@ -1,12 +1,18 @@
 package suthasidev.cleanfoodproject;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private GridView gridView;
 
     private String nameUserString;
+
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     /*public int[] objImage = new int[]{R.drawable.android,
             R.drawable.marshmallow, R.drawable.lollipop, R.drawable.kitkat,
@@ -58,11 +66,53 @@ public class MainActivity extends AppCompatActivity {
         //synchronize JSON to SQLite
         synJSONtoSQLite();
 
+        //Create Toolbar
+        createToolbar();
+
         //Set Gridview Adepter
         setGridview();
 
 
     }  //Main Method
+
+    private void createToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
+
+        actionBarDrawerToggle = new ActionBarDrawerToggle(
+                MainActivity.this,
+                drawerLayout,
+                R.string.open,
+                R.string.close
+        );
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }   // createToolbar
+
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        actionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        actionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public void clickSignIn(View view) {
         startActivity(new Intent(MainActivity.this, SignInActivity.class));
