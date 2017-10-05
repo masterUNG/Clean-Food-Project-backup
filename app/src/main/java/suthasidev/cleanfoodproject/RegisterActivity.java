@@ -68,7 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
             objNameValuePairs.add(new BasicNameValuePair(MyManage.column_Name, nameString));
 
             HttpClient objHttpClient = new DefaultHttpClient();
-            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tan/php_add_user.php");
+            MyConstant myConstant = new MyConstant();
+            HttpPost objHttpPost = new HttpPost(myConstant.getUrlPostUser());
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
             objHttpClient.execute(objHttpPost);
 
