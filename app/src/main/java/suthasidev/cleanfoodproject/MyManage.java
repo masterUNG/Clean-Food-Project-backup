@@ -111,24 +111,22 @@ public class MyManage {
         objContentValues.put(column_NameComment, strName);
         objContentValues.put(column_Comment, strComment);
 
-
         return writeSqLiteDatabase.insert(table_recipe, null, objContentValues);
     }
 
-    /*public long addComment(String strRecipe,
-                          String strUser,
+    public long addComment(String strRecipe,
+                          String strName,
                           String strDate,
                           String strComment) {
 
         ContentValues objContentValues = new ContentValues();
         objContentValues.put(column_Recipe, strRecipe);
-        objContentValues.put(column_Name, strUser);
+        objContentValues.put(column_Name, strName);
         objContentValues.put(column_Date, strDate);
         objContentValues.put(column_Comment, strComment);
 
-
         return writeSqLiteDatabase.insert(table_comment, null, objContentValues);
-    }*/
+    }
 
     public long addUser(String strUser,
                         String strPassword,

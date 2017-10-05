@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         synJSONtoSQLite();
 
         //Set Gridview Adepter
-        setGridview();
+        //setGridview();
 
 
     }  //Main Method
@@ -133,14 +133,13 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(MyPolicy);
 
         int intTABLE = 0;
-        while (intTABLE <= 2) {
+        while (intTABLE <= 3) {
             //InputStream
             InputStream objInputStream = null;
-            String[] urlStrings = new String[3];
-            urlStrings[0] = "http://swiftcodingthai.com/tan/php_get_user.php";
-            urlStrings[1] = "http://swiftcodingthai.com/tan/php_get_recipe.php";
-            urlStrings[2] = "http://swiftcodingthai.com/tan/php_get_restaurant.php";
-            /*urlStrings[3] = "http://swiftcodingthai.com/tan/php_get_comment.php";*/
+
+            MyConstant myConstant = new MyConstant();
+            String[] urlStrings = myConstant.getUrlAddData();
+
             String tag = "CleanFood";
 
             try {
@@ -213,20 +212,26 @@ public class MainActivity extends AppCompatActivity {
                             objMyManage.addRestaurant(strRestaurant, strImgRes, strPhone, strAddress, strWeb, strLat, strLng);
                             break;
 
-                        /*case 3:
+                        case 3:
                             //commmentTABLE
                             String strCRecipe = jsonObject.getString(MyManage.column_Recipe);
                             String strCUser = jsonObject.getString(MyManage.column_Name);
                             String strCDate = jsonObject.getString(MyManage.column_Date);
                             String strCComment = jsonObject.getString(MyManage.column_Comment);
+
+                            Log.d("5octV1", "CRecipe ==>" + strCRecipe);
+                            Log.d("5octV1", "CUser ==>" + strCUser);
+                            Log.d("5octV1", "CDate ==>" + strCDate);
+                            Log.d("5octV1", "CComment ==>" + strCComment);
+
                             objMyManage.addComment(strCRecipe, strCUser, strCDate, strCComment);
-                            break;*/
+                            break;
                     }
 
                 }   //for
 
             } catch (Exception e) {
-                Log.d(tag, "Update => " + e.toString());
+                Log.d("5octV1", "Error e => " + e.toString());
             }
 
             intTABLE += 1;
