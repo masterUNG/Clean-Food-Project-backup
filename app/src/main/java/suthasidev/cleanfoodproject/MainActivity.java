@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MyManage objMyManage;
 
-    GridView gridView;
+    private GridView gridView;
 
     private String nameUserString;
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         synJSONtoSQLite();
 
         //Set Gridview Adepter
-        //setGridview();
+        setGridview();
 
 
     }  //Main Method
