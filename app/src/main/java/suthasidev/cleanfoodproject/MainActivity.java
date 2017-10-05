@@ -195,9 +195,7 @@ public class MainActivity extends AppCompatActivity {
                             String strHowTo = jsonObject.getString(MyManage.column_HowTo);
                             String strDescription = jsonObject.getString(MyManage.column_Description);
                             String strImg = jsonObject.getString(MyManage.column_ImageRecipe);
-                            String strNameComment = jsonObject.getString(MyManage.column_NameComment);
-                            String strComment = jsonObject.getString(MyManage.column_Comment);
-                            objMyManage.addRecipe(strRecipe, strIngredients, strHowTo, strDescription, strImg, strNameComment, strComment);
+                            objMyManage.addRecipe(strRecipe, strIngredients, strHowTo, strDescription, strImg);
                             break;
 
                         case 2:
@@ -259,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
     private void testAddValue() {
         objMyManage.addUser("user", "password", "name");
         objMyManage.addRecipe("recipe", "ingredients", "How-To",
-                "description", "Image", "name", "comment");
+                "description", "Image");
         objMyManage.addRestaurant("Res", "ImgRes", "phone", "Address",
                 "Website", "Latitude", "Longtitude");
 

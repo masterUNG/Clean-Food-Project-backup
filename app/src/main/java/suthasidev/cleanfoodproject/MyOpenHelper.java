@@ -23,9 +23,7 @@ public class MyOpenHelper extends SQLiteOpenHelper{
             "Ingredients text," +
             "HowTo text," +
             "Description text," +
-            "ImageRecipe text," +
-            "NameComment text," +
-            "Comment text);";
+            "ImageRecipe text);";
 
     private static final String create_restaurantTABLE = "create table restaurantTABLE(" +
             "_id integer primary key," +

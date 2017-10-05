@@ -26,8 +26,6 @@ public class MyManage {
     public static final String column_HowTo = "HowTo";
     public static final String column_Description = "Description";
     public static final String column_ImageRecipe = "ImageRecipe";
-    public static final String column_NameComment = "NameComment";
-    public static final String column_Comment = "Comment";
 
     public static final String column_Restaurant = "Restaurant";
     public static final String column_ImageRestaurant = "ImageRestaurant";
@@ -37,6 +35,8 @@ public class MyManage {
     public static final String column_Lat = "Lat";
     public static final String column_Lng = "Lng";
 
+
+    public static final String column_Comment = "Comment";
     public static final String column_Date = "Date";
 
     public MyManage(Context context) {
@@ -98,9 +98,7 @@ public class MyManage {
                           String strIngredients,
                           String strHowTo,
                           String strDescription,
-                          String strImg,
-                          String strName,
-                          String strComment) {
+                          String strImg) {
 
         ContentValues objContentValues = new ContentValues();
         objContentValues.put(column_Recipe, strRecipe);
@@ -108,8 +106,6 @@ public class MyManage {
         objContentValues.put(column_HowTo, strHowTo);
         objContentValues.put(column_Description, strDescription);
         objContentValues.put(column_ImageRecipe, strImg);
-        objContentValues.put(column_NameComment, strName);
-        objContentValues.put(column_Comment, strComment);
 
         return writeSqLiteDatabase.insert(table_recipe, null, objContentValues);
     }
