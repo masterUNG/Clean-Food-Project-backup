@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="10dp">
+
+    <!--Name-->
+    <TextView
+        android:id="@+id/txtName"
+        android:textColor="#ed0606"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--Comment-->
+    <TextView
+        android:id="@+id/txtComment"
+        android:textColor="#2428ea"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--Date-->
+    <TextView
+        android:id="@+id/txtDate"
+        android:textColor="#ed9806"
+        android:textSize="18sp"
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

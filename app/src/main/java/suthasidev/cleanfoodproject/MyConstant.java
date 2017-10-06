@@ -13,6 +13,11 @@ public class MyConstant {
             "http://androidthai.in.th/tan/php_get_restaurant.php",
             "http://androidthai.in.th/tan/php_get_comment.php"
     };
+    private String urlGetCommentWhereRecipe = "http://androidthai.in.th/tan/getValueWhereRecipeMaster.php";
+
+    public String getUrlGetCommentWhereRecipe() {
+        return urlGetCommentWhereRecipe;
+    }
 
     public String getUrlPostUser() {
         return urlPostUser;
