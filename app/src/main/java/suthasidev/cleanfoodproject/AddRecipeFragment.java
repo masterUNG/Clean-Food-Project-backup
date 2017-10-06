@@ -1,17 +1,25 @@
 package suthasidev.cleanfoodproject;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import org.jibble.simpleftp.SimpleFTP;
+
+import java.io.File;
 
 /**
  * Created by masterung on 6/10/2017 AD.
@@ -21,6 +29,7 @@ public class AddRecipeFragment extends Fragment{
 
     private Uri uri;
     private ImageView imageView;
+    private String pathImageString, nameImageString;
 
     @Nullable
     @Override
@@ -37,6 +46,57 @@ public class AddRecipeFragment extends Fragment{
         //Image Controller
         imageController();
 
+        //Save Controller
+        saveController();
+
+
+    }
+
+    private void saveController() {
+        Button button = (Button) getView().findViewById(R.id.btnSave);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //UpLoad Image To Server
+                uploadImageToSerVer();
+
+                //Upload Text To Server
+                uploadTextToServer();
+
+            }
+        });
+    }
+
+    private void uploadTextToServer() {
+
+
+
+
+
+    }
+
+    private void uploadImageToSerVer() {
+
+        String tag = "6octV3";
+        try {
+
+            StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy
+                    .Builder().permitAll().build();
+            StrictMode.setThreadPolicy(threadPolicy);
+
+            SimpleFTP simpleFTP = new SimpleFTP();
+            simpleFTP.connect("ftp.swiftcodingthai.com", 21, "bow@swiftcodingthai.com", "Abc12345");
+            simpleFTP.bin();
+            simpleFTP.cwd("Image");
+            simpleFTP.stor(new File(pathImageString));
+            simpleFTP.disconnect();
+
+
+
+        } catch (Exception e) {
+            Log.d(tag, "e uploadImage ==> " + e.toString());
+        }
 
     }
 
@@ -66,11 +126,28 @@ public class AddRecipeFragment extends Fragment{
             try {
 
                 uri = data.getData();
+
+                //Show Image
                 Bitmap bitmap = BitmapFactory.decodeStream(getActivity()
                         .getContentResolver().openInputStream(uri));
                 imageView.setImageBitmap(bitmap);
 
+                //Find Path
+                String[] strings = new String[]{MediaStore.Images.Media.DATA};
+                Cursor cursor = getActivity().getContentResolver().query(uri, strings, null, null, null);
+
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                    pathImageString = cursor.getString(index);
+                } else {
+                    pathImageString = uri.getPath();
+                }
+
+                Log.d(tag, "Path of Image ==> " + pathImageString);
+
             } catch (Exception e) {
+
                 e.printStackTrace();
             }
 
